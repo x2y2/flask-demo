@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block content %}
+<form class="form" method="POST">
+　　{{ form.hidden_tag() }}
+  <div class="input-group">
+    {{ form.role.label(class="input-group-addon") }}
+    {{ form.role(class="form-control",placeholder="请再次输入密码") }}
+  </div>
+  <div class="input-group">
+    {{ form.username.label(class="input-group-addon") }}
+    {{ form.username(class="form-control",placeholder="请输入昵称") }}
+  </div>
+  <div class="input-group">
+    {{ form.email.label(class="input-group-addon") }}
+    {{ form.email(class="form-control",placeholder="请输入邮箱") }}
+  </div>
+  <div class="input-group">
+    {{ form.password.label(class="input-group-addon") }}
+    {{ form.password(class="form-control",placeholder="请输入密码") }}
+  </div>
+  <div class="input-group">
+    {{ form.confirm.label(class="input-group-addon") }}
+    {{ form.confirm(class="form-control",placeholder="请再次输入密码") }}
+  </div>
+  <div style="margin-top: 10px;">
+    {{ form.submit(class="btn btn-lg btn-primary btn-block") }}
+  </div>
+</form>
+{% for messages in get_flashed_messages() %}
+   <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>Flask</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet"></style>
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet"></style>
+  </head>
+  <body>
+    <div class="main-content">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <a class="login" style="float: left;color: black;">Flask</a>
+      {% if cur_user %}
+        {% if cur_user == 'admin' %}
+          <a href="/auth/add_user" class="login" style="color: black;" onfocus="blur()">创建用户</a>
+        {% endif %}
+        <a href='/' class="login" style="color: black;float: right;">退出</a>
+        <a class="login" style="color: black;float: right;">{{ cur_user }}</a>
+      {% else %}
+        <a  href="/auth/login" class="login" style="color: black;" onfocus="blur()">登录</a>
+      {% endif %}
+    </nav>
+    <content>
+      {% block content %}{% endblock %}
+    </content>
+    <script src="{{url_for('static',filename="js/jquery.min.js")}}"></script>
+    <script src="{{url_for('static',filename="js/bootstrap.min.js")}}"></script>
+  </body>
